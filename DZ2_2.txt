@@ -1,0 +1,2 @@
+# Задание 2
+~$mv second/second.py first
