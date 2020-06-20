@@ -1,4 +1,4 @@
-# Ηΰδΰνθε 1
+# Γ‡Ε•Γ¤Ε•Γ­ΔΔΊ 1
 
 ubuntu@ip-172-31-18-130:~$ vim file1.py
 ubuntu@ip-172-31-18-130:~$ ls
@@ -6,25 +6,25 @@ file1.py  instruments.txt  snap
 ubuntu@ip-172-31-18-130:~$ cat file1.py
 print("Hello, world!")
 
-# Ηΰδΰνθε 2
+# Γ‡Ε•Γ¤Ε•Γ­ΔΔΊ 2
 
 ubuntu@ip-172-31-18-130:~$ wc -l file1.py
 1 file1.py
 
-# Ηΰδΰνθε 3
+# Γ‡Ε•Γ¤Ε•Γ­ΔΔΊ 3
 
 ubuntu@ip-172-31-18-130:~$ nano file2.py
 ubuntu@ip-172-31-18-130:~$ cat file2.py
 print("Linear regression")
 
-# Ηΰδΰνθε 4
+# Γ‡Ε•Γ¤Ε•Γ­ΔΔΊ 4
 
 ubuntu@ip-172-31-18-130:~$ cat file1.py file2.py > file3.py
 ubuntu@ip-172-31-18-130:~$ cat file3.py
 print("Hello, world!")
 print("Linear regression")
 
-# Ηΰδΰνθε 5
+# Γ‡Ε•Γ¤Ε•Γ­ΔΔΊ 5
 
 ubuntu@ip-172-31-18-130:~$ cat > file4.py
 Text form keyboard
