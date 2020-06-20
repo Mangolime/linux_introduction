@@ -1,0 +1,7 @@
+# Задание 1
+~$mkdir first
+~$mkdir second
+~$echo > first/first.py
+~$echo > second/second.py
+~$echo "print(1)" > first/first.py
+~$echo "print(2)" > second/second.py
