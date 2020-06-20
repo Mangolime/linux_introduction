@@ -1,0 +1,34 @@
+# Задание 1
+
+ubuntu@ip-172-31-18-130:~$ vim file1.py
+ubuntu@ip-172-31-18-130:~$ ls
+file1.py  instruments.txt  snap
+ubuntu@ip-172-31-18-130:~$ cat file1.py
+print("Hello, world!")
+
+# Задание 2
+
+ubuntu@ip-172-31-18-130:~$ wc -l file1.py
+1 file1.py
+
+# Задание 3
+
+ubuntu@ip-172-31-18-130:~$ nano file2.py
+ubuntu@ip-172-31-18-130:~$ cat file2.py
+print("Linear regression")
+
+# Задание 4
+
+ubuntu@ip-172-31-18-130:~$ cat file1.py file2.py > file3.py
+ubuntu@ip-172-31-18-130:~$ cat file3.py
+print("Hello, world!")
+print("Linear regression")
+
+# Задание 5
+
+ubuntu@ip-172-31-18-130:~$ cat > file4.py
+Text form keyboard
+ubuntu@ip-172-31-18-130:~$ cat file4.py
+Text form keyboard
+ubuntu@ip-172-31-18-130:~$ cat file3.py file4.py | wc -l
+3
