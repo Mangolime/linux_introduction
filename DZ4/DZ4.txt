@@ -26,6 +26,15 @@ user_new@ip-172-31-18-130:/home/ubuntu$ which python3
 user_new@ip-172-31-18-130:/home/ubuntu$ cd /home/user_new
 user_new@ip-172-31-18-130:~$ vim numbers.py
 user_new@ip-172-31-18-130:~$ chmod +x numbers.py
+user_new@ip-172-31-18-130:~$ cat numbers.py
+#!/usr/bin/python3
+
+from time import sleep
+
+for i in range(1, 11):
+    print(i)
+    sleep(1)
+
 user_new@ip-172-31-18-130:~$ ./numbers.py
 1
 2
