@@ -1,0 +1,128 @@
+# Добавление диска к первому инстансу
+
+ubuntu@ip-172-31-36-77:~$ sudo file -s /dev/xvdf
+/dev/xvdf: data
+ubuntu@ip-172-31-36-77:~$ sudo mkfs -t xfs /dev/xvdf
+meta-data=/dev/xvdf              isize=512    agcount=4, agsize=131072 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=0
+         =                       reflink=1
+data     =                       bsize=4096   blocks=524288, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+log      =internal log           bsize=4096   blocks=2560, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+ubuntu@ip-172-31-36-77:~$ sudo file -s /dev/xvdf
+/dev/xvdf: SGI XFS filesystem data (blksz 4096, inosz 512, v2 dirs)
+ubuntu@ip-172-31-36-77:~$ sudo mkdir /data
+ubuntu@ip-172-31-36-77:~$ sudo mount /dev/xvdf /data
+ubuntu@ip-172-31-36-77:~$ ls -la /data
+total 4
+drwxr-xr-x  2 root root    6 Jul  1 19:03 .
+drwxr-xr-x 20 root root 4096 Jul  1 19:11 ..
+ubuntu@ip-172-31-36-77:~$ sudo chmod o+w /data
+ubuntu@ip-172-31-36-77:~$ ls -la /data
+total 4
+drwxr-xrwx  2 root root    6 Jul  1 19:03 .
+drwxr-xr-x 20 root root 4096 Jul  1 19:11 ..
+ubuntu@ip-172-31-36-77:~$ sudo cp /etc/fstab /etc/fstab.orig
+ubuntu@ip-172-31-36-77:~$ blkid
+/dev/xvda1: LABEL="cloudimg-rootfs" UUID="fdd49fba-0340-4ed1-b0fc-8da187913fec" TYPE="ext4" PARTUUID="093eb684-01"
+ubuntu@ip-172-31-36-77:~$
+ubuntu@ip-172-31-36-77:~$ sudo mount /dev/xvdf /data
+ubuntu@ip-172-31-36-77:~$ df
+Filesystem     1K-blocks    Used Available Use% Mounted on
+/dev/root        8065444 2702544   5346516  34% /
+devtmpfs          488748       0    488748   0% /dev
+tmpfs             501048       0    501048   0% /dev/shm
+tmpfs             100212     784     99428   1% /run
+tmpfs               5120       0      5120   0% /run/lock
+tmpfs             501048       0    501048   0% /sys/fs/cgroup
+/dev/loop0         18432   18432         0 100% /snap/amazon-ssm-agent/1566
+/dev/loop1         28800   28800         0 100% /snap/amazon-ssm-agent/2012
+/dev/loop2         99456   99456         0 100% /snap/core/9289
+/dev/loop3         98944   98944         0 100% /snap/core/9436
+/dev/loop4         56320   56320         0 100% /snap/core18/1705
+/dev/loop5         56320   56320         0 100% /snap/core18/1754
+/dev/loop6         72960   72960         0 100% /snap/lxd/15878
+/dev/loop7         72960   72960         0 100% /snap/lxd/15896
+/dev/loop8          4352    4352         0 100% /snap/tree/18
+tmpfs             100208       0    100208   0% /run/user/1000
+/dev/xvdf        2086912   47604   2039308   3% /data
+ubuntu@ip-172-31-36-77:~$ blkid
+/dev/xvda1: LABEL="cloudimg-rootfs" UUID="fdd49fba-0340-4ed1-b0fc-8da187913fec" TYPE="ext4" PARTUUID="093eb684-01"
+/dev/xvdf: UUID="99013774-ad3a-4c29-950d-e35a006ea182" TYPE="xfs"
+ubuntu@ip-172-31-36-77:~$ sudo nano /etc/fstab
+ubuntu@ip-172-31-36-77:~$ sudo umount /data
+ubuntu@ip-172-31-36-77:~$ df
+Filesystem     1K-blocks    Used Available Use% Mounted on
+/dev/root        8065444 2702560   5346500  34% /
+devtmpfs          488748       0    488748   0% /dev
+tmpfs             501048       0    501048   0% /dev/shm
+tmpfs             100212     784     99428   1% /run
+tmpfs               5120       0      5120   0% /run/lock
+tmpfs             501048       0    501048   0% /sys/fs/cgroup
+/dev/loop0         18432   18432         0 100% /snap/amazon-ssm-agent/1566
+/dev/loop1         28800   28800         0 100% /snap/amazon-ssm-agent/2012
+/dev/loop2         99456   99456         0 100% /snap/core/9289
+/dev/loop3         98944   98944         0 100% /snap/core/9436
+/dev/loop4         56320   56320         0 100% /snap/core18/1705
+/dev/loop5         56320   56320         0 100% /snap/core18/1754
+/dev/loop6         72960   72960         0 100% /snap/lxd/15878
+/dev/loop7         72960   72960         0 100% /snap/lxd/15896
+/dev/loop8          4352    4352         0 100% /snap/tree/18
+tmpfs             100208       0    100208   0% /run/user/1000
+ubuntu@ip-172-31-36-77:~$ sudo mount -a
+ubuntu@ip-172-31-36-77:~$ df
+Filesystem     1K-blocks    Used Available Use% Mounted on
+/dev/root        8065444 2702564   5346496  34% /
+devtmpfs          488748       0    488748   0% /dev
+tmpfs             501048       0    501048   0% /dev/shm
+tmpfs             100212     784     99428   1% /run
+tmpfs               5120       0      5120   0% /run/lock
+tmpfs             501048       0    501048   0% /sys/fs/cgroup
+/dev/loop0         18432   18432         0 100% /snap/amazon-ssm-agent/1566
+/dev/loop1         28800   28800         0 100% /snap/amazon-ssm-agent/2012
+/dev/loop2         99456   99456         0 100% /snap/core/9289
+/dev/loop3         98944   98944         0 100% /snap/core/9436
+/dev/loop4         56320   56320         0 100% /snap/core18/1705
+/dev/loop5         56320   56320         0 100% /snap/core18/1754
+/dev/loop6         72960   72960         0 100% /snap/lxd/15878
+/dev/loop7         72960   72960         0 100% /snap/lxd/15896
+/dev/loop8          4352    4352         0 100% /snap/tree/18
+tmpfs             100208       0    100208   0% /run/user/1000
+/dev/xvdf        2086912   47604   2039308   3% /data
+
+# Запись на диск нового файла test.txt
+
+ubuntu@ip-172-31-36-77:~$ cd /data/
+ubuntu@ip-172-31-36-77:/data$ echo test > test.txt
+ubuntu@ip-172-31-36-77:/data$ cat test
+cat: test: No such file or directory
+ubuntu@ip-172-31-36-77:/data$ cat test.txt
+test
+
+# Монтирование диска к новому инстансу
+
+ubuntu@ip-172-31-39-55:~$ sudo mkdir /data
+ubuntu@ip-172-31-39-55:~$ sudo mount /dev/xvdf /data
+ubuntu@ip-172-31-39-55:~$ df
+Filesystem     1K-blocks    Used Available Use% Mounted on
+/dev/root        8065444 1323436   6725624  17% /
+devtmpfs          488748       0    488748   0% /dev
+tmpfs             501048       0    501048   0% /dev/shm
+tmpfs             100212     780     99432   1% /run
+tmpfs               5120       0      5120   0% /run/lock
+tmpfs             501048       0    501048   0% /sys/fs/cgroup
+/dev/loop0         99456   99456         0 100% /snap/core/9289
+/dev/loop1         56320   56320         0 100% /snap/core18/1754
+/dev/loop2         71040   71040         0 100% /snap/lxd/15457
+/dev/loop3         18432   18432         0 100% /snap/amazon-ssm-agent/1566
+tmpfs             100208       0    100208   0% /run/user/1000
+/dev/xvdf        2086912   47608   2039304   3% /data
+ubuntu@ip-172-31-39-55:~$ ls /data
+test.txt
+ubuntu@ip-172-31-39-55:~$ nano /data/test.txt
+ubuntu@ip-172-31-39-55:~$ cat /data/test.txt
+test
