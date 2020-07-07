@@ -1,0 +1,8 @@
+ubuntu@ip-172-31-18-130:~$ ls
+archive.tar.gz    file2.py    header_inst.txt  num.txt       test.py
+archive_0.tar.gz  file3.py    instruments.txt  numbers.py    test3py
+create_matrix.py  file4.py    myfile_1         snap          test_copy.txt
+file1.py          header.txt  myfile_2         temp_file.py
+ubuntu@ip-172-31-18-130:~$ ls | grep '^t.*\.py$'
+temp_file.py
+test.py
