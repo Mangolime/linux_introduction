@@ -1,0 +1,6 @@
+ubuntu@ip-172-31-18-130:~$ y=0
+ubuntu@ip-172-31-18-130:~$ while [ $y -le 100 ]
+> do
+>   echo $y
+>   let "y += 2"
+> done

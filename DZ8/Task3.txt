@@ -1,0 +1,15 @@
+ubuntu@ip-172-31-18-130:~$ nano test.txt
+ubuntu@ip-172-31-18-130:~$ cat test.txt
+File for copy
+ubuntu@ip-172-31-18-130:~$ cat > backup.sh
+#!/bin/bash
+cp /home/ubuntu/test.txt /home/ubuntu/test.txt.bak
+^Z
+[2]+  Stopped                 cat > backup.sh
+ubuntu@ip-172-31-18-130:~$ cat backup.sh
+#!/bin/bash
+cp /home/ubuntu/test.txt /home/ubuntu/test.txt.bak
+ubuntu@ip-172-31-18-130:~$ chmod +x backup.sh
+ubuntu@ip-172-31-18-130:~$ crontab -e
+ubuntu@ip-172-31-18-130:~$ crontab -l
+10 * * * * /home/ubuntu/backup.sh
