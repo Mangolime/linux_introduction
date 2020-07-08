@@ -1,0 +1,4 @@
+ubuntu@ip-172-31-18-130:~$ uptime
+ 20:06:09 up 9 days,  1:08,  1 user,  load average: 0.00, 0.00, 0.00
+ubuntu@ip-172-31-18-130:~$ uptime | sed 's/^.*\([0-9]\+ days\).*/\1/'
+9 days
